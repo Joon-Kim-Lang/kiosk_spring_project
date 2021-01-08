@@ -21,4 +21,9 @@ public class MemoryPaymentRepository implements PaymentRepository{
     public List<PaymentInfo> findAll() {
         return new ArrayList<>(store.values());
     }
+
+    @Override
+    public PaymentInfo findByBarcode(String barcode) {
+        return store.get(barcode);
+    }
 }

@@ -49,6 +49,16 @@ class PaymentServiceImplTest {
             System.out.println("paymentInfo = " + paymentInfo.getBarcode());
         }
     }
+    @Test
+    @DisplayName("바코드로 payment 찾기")
+    void findByBarcode(){
+        Item item1 = new Item(Kind.hour_1, 2000);
+        Item item2 = new Item(Kind.hour_2, 3000);
+        PaymentInfo paymentInfo1= new PaymentInfo("김형준", "01038067268", LocalDateTime.now(), item1);
+        String barcode1 = paymentService.join(paymentInfo1);
+        PaymentInfo findPaymentInfo = paymentService.findPaymentInfo(barcode1);
+        Assertions.assertThat(findPaymentInfo).isEqualTo(paymentInfo1);
 
+    }
 
 }

@@ -8,4 +8,5 @@ public interface PaymentRepository {
 
     PaymentInfo save(PaymentInfo paymentInfo);
     List<PaymentInfo> findAll();
+    PaymentInfo findByBarcode(String barcode);
 }

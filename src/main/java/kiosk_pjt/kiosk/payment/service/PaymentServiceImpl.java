@@ -1,14 +1,16 @@
 package kiosk_pjt.kiosk.payment.service;
 
+import kiosk_pjt.kiosk.AppConfig;
 import kiosk_pjt.kiosk.payment.domain.PaymentInfo;
 import kiosk_pjt.kiosk.payment.repository.PaymentRepository;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.List;
 
 public class PaymentServiceImpl implements PaymentService{
 
     private final PaymentRepository paymentRepository;
-
     public PaymentServiceImpl(PaymentRepository paymentRepository) {
         this.paymentRepository = paymentRepository;
     }
@@ -22,5 +24,10 @@ public class PaymentServiceImpl implements PaymentService{
     @Override
     public List<PaymentInfo> showPayments() {
         return paymentRepository.findAll();
+    }
+
+    @Override
+    public PaymentInfo findPaymentInfo(String barcode) {
+        return paymentRepository.findByBarcode(barcode);
     }
 }

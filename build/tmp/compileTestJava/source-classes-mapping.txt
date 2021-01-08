@@ -1,0 +1,6 @@
+kiosk_pjt/kiosk/payment/service/PaymentServiceImplTest.java
+ kiosk_pjt.kiosk.payment.service.PaymentServiceImplTest
+kiosk_pjt/kiosk/KioskApplicationTests.java
+ kiosk_pjt.kiosk.KioskApplicationTests
+kiosk_pjt/kiosk/payment/domain/PaymentInfoTest.java
+ kiosk_pjt.kiosk.payment.domain.PaymentInfoTest
