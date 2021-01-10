@@ -4,3 +4,5 @@ kiosk_pjt/kiosk/KioskApplicationTests.java
  kiosk_pjt.kiosk.KioskApplicationTests
 kiosk_pjt/kiosk/payment/domain/PaymentInfoTest.java
  kiosk_pjt.kiosk.payment.domain.PaymentInfoTest
+kiosk_pjt/kiosk/Item/repository/JpaItemRepositoryTest.java
+ kiosk_pjt.kiosk.Item.repository.JpaItemRepositoryTest
