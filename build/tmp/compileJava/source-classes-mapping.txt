@@ -2,17 +2,25 @@ kiosk_pjt/kiosk/payment/repository/MemoryPaymentRepository.java
  kiosk_pjt.kiosk.payment.repository.MemoryPaymentRepository
 kiosk_pjt/kiosk/Item/domain/Kind.java
  kiosk_pjt.kiosk.Item.domain.Kind
-kiosk_pjt/kiosk/payment/service/PaymentService.java
- kiosk_pjt.kiosk.payment.service.PaymentService
+kiosk_pjt/kiosk/Item/service/ItemService.java
+ kiosk_pjt.kiosk.Item.service.ItemService
 kiosk_pjt/kiosk/AppConfig.java
  kiosk_pjt.kiosk.AppConfig
-kiosk_pjt/kiosk/Item/domain/Item.java
- kiosk_pjt.kiosk.Item.domain.Item
 kiosk_pjt/kiosk/payment/service/PaymentServiceImpl.java
  kiosk_pjt.kiosk.payment.service.PaymentServiceImpl
+kiosk_pjt/kiosk/Item/service/ItemServiceImpl.java
+ kiosk_pjt.kiosk.Item.service.ItemServiceImpl
+kiosk_pjt/kiosk/KioskApplication.java
+ kiosk_pjt.kiosk.KioskApplication
+kiosk_pjt/kiosk/Item/repository/ItemRepository.java
+ kiosk_pjt.kiosk.Item.repository.ItemRepository
+kiosk_pjt/kiosk/payment/service/PaymentService.java
+ kiosk_pjt.kiosk.payment.service.PaymentService
+kiosk_pjt/kiosk/Item/domain/Item.java
+ kiosk_pjt.kiosk.Item.domain.Item
+kiosk_pjt/kiosk/Item/repository/JpaItemRepository.java
+ kiosk_pjt.kiosk.Item.repository.JpaItemRepository
 kiosk_pjt/kiosk/payment/repository/PaymentRepository.java
  kiosk_pjt.kiosk.payment.repository.PaymentRepository
 kiosk_pjt/kiosk/payment/domain/PaymentInfo.java
  kiosk_pjt.kiosk.payment.domain.PaymentInfo
-kiosk_pjt/kiosk/KioskApplication.java
- kiosk_pjt.kiosk.KioskApplication

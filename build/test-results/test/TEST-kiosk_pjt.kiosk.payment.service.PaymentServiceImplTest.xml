@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="kiosk_pjt.kiosk.payment.service.PaymentServiceImplTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-01-08T09:10:21" hostname="DESKTOP-SQN874J" time="0.056">
-  <properties/>
-  <testcase name="바코드로 payment 찾기" classname="kiosk_pjt.kiosk.payment.service.PaymentServiceImplTest" time="0.056"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
