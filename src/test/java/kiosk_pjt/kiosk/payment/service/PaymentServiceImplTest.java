@@ -1,5 +1,6 @@
 package kiosk_pjt.kiosk.payment.service;
 
+import kiosk_pjt.kiosk.AppConfig;
 import kiosk_pjt.kiosk.Item.domain.Item;
 import kiosk_pjt.kiosk.Item.domain.Kind;
 import kiosk_pjt.kiosk.payment.domain.PaymentInfo;
@@ -8,6 +9,8 @@ import kiosk_pjt.kiosk.payment.repository.PaymentRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -17,8 +20,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PaymentServiceImplTest {
 
-    PaymentRepository paymentRepository = new MemoryPaymentRepository();
-    PaymentService paymentService = new PaymentServiceImpl(paymentRepository );
+    //PaymentRepository paymentRepository = new MemoryPaymentRepository();
+    //PaymentService paymentService = new PaymentServiceImpl(paymentRepository );
+    ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+    PaymentService paymentService = applicationContext.getBean(PaymentService.class);
 
     @Test
     @DisplayName("저장소 기록테스트")
