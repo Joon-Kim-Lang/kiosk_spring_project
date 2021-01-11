@@ -20,7 +20,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-@Transactional
+//@Transactional
 class JpaItemRepositoryTest {
 
 
@@ -28,24 +28,24 @@ class JpaItemRepositoryTest {
     ItemRepository itemRepository;
 
     @Test
-    //@Commit
+    @Commit
     @DisplayName("Jpa 레포 잘 동작하는지 확인")
     void jpaRepositoryTest(){
-        //given
-        Item item1 = new Item(Kind.hou_1, 1000);
-        Item item2 = new Item(Kind.hou_2,2000);
-        Item item3 = new Item(Kind.day_7,50000);
-        Item item4 = new Item(Kind.day_14,120000);
-        Item item5 = new Item(Kind.tim_30,30000);
-        Item item6 = new Item(Kind.tim_50,50000);
-
-        //when
-        itemRepository.save(item1);
-        itemRepository.save(item2);
-        itemRepository.save(item3);
-        itemRepository.save(item4);
-        itemRepository.save(item5);
-        itemRepository.save(item6);
+//        //given
+//        Item item1 = new Item(Kind.hou_1, 1000);
+//        Item item2 = new Item(Kind.hou_2,2000);
+//        Item item3 = new Item(Kind.day_7,50000);
+//        Item item4 = new Item(Kind.day_14,120000);
+//        Item item5 = new Item(Kind.tim_30,30000);
+//        Item item6 = new Item(Kind.tim_50,50000);
+//
+//        //when
+//        itemRepository.save(item1);
+//        itemRepository.save(item2);
+//        itemRepository.save(item3);
+//        itemRepository.save(item4);
+//        itemRepository.save(item5);
+//        itemRepository.save(item6);
 
 
         //then

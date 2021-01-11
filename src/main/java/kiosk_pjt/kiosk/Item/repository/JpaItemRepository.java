@@ -2,16 +2,18 @@ package kiosk_pjt.kiosk.Item.repository;
 
 import kiosk_pjt.kiosk.Item.domain.Item;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
+@Component
 public class JpaItemRepository  implements ItemRepository{
 
     private final EntityManager em;
-
+    @Autowired
     public JpaItemRepository(EntityManager em) {
         this.em = em;
     }
