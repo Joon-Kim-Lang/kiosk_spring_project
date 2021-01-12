@@ -1,6 +1,7 @@
 package kiosk_pjt.kiosk.payment.domain;
 
 import kiosk_pjt.kiosk.Item.domain.Item;
+import kiosk_pjt.kiosk.Item.domain.Kind;
 
 import java.time.LocalDateTime;
 
@@ -10,17 +11,16 @@ public class PaymentInfo {
     private String name;
     private String phoneNumber;
     private LocalDateTime paymentTime;
-    private Item item;
+    private Kind itemKind;
 
+    public PaymentInfo() {
 
-    public PaymentInfo(String name, String phoneNumber, LocalDateTime paymentTime,Item item) {
-
-        this.name = name;
-        this.phoneNumber = phoneNumber;
-        this.paymentTime = paymentTime;
-        this.item  = item;
-        //바코드는 상품종류, 이름,번호,결제시각의 조합
-        this.barcode = item.getKind()+"_"+name+"_"+phoneNumber+"_"+paymentTime;
+//        this.name = name;
+//        this.phoneNumber = phoneNumber;
+//        this.paymentTime = paymentTime;
+//        this.item  = item;
+//        //바코드는 상품종류, 이름,번호,결제시각의 조합
+//        this.barcode = item.getKind()+"_"+name+"_"+phoneNumber+"_"+paymentTime;
     }
 
     public String getBarcode() {
@@ -55,11 +55,12 @@ public class PaymentInfo {
         this.paymentTime = paymentTime;
     }
 
-    public Item getItem() {
-        return item;
+    public Kind getItemKind() {
+        return itemKind;
     }
 
-    public void setItem(Item item) {
-        this.item = item;
+    public void setItemKind(Kind itemKind) {
+        this.itemKind = itemKind;
     }
+
 }

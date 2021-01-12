@@ -14,14 +14,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PaymentInfoTest {
 
-    @Test
-    @DisplayName("바코드명 잘 들어가는지 테스트")
-    void barcodeNameTest(){
-        //given
-        Item item = new Item(Kind.hou_1, 2000);
-        PaymentInfo paymentInfo= new PaymentInfo("김형준", "01038067268", LocalDateTime.now(), item);
-        //then
-        System.out.println("paymentInfo.getBarcode() = " + paymentInfo.getBarcode());
-    }
+//    @Test
+//    @DisplayName("바코드명 잘 들어가는지 테스트")
+//    void barcodeNameTest(){
+//        //given
+//        Item item = new Item(Kind.hou_1, 2000);
+//        PaymentInfo paymentInfo= new PaymentInfo("김형준", "01038067268", LocalDateTime.now(), item);
+//        //then
+//        System.out.println("paymentInfo.getBarcode() = " + paymentInfo.getBarcode());
+//    }
 
 }

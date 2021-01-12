@@ -1,6 +1,7 @@
 package kiosk_pjt.kiosk.Item.repository;
 
 import kiosk_pjt.kiosk.Item.domain.Item;
+import kiosk_pjt.kiosk.Item.domain.Kind;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
@@ -29,4 +30,11 @@ public class JpaItemRepository  implements ItemRepository{
         return em.createQuery("select i from Item i", Item.class)
                 .getResultList();
     }
+
+    @Override
+    public Item findById(Kind kind) {
+        return em.find(Item.class, kind);
+    }
+
+
 }

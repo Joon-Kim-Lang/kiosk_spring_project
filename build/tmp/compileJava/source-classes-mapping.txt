@@ -20,10 +20,19 @@ kiosk_pjt/kiosk/Item/repository/ItemRepository.java
  kiosk_pjt.kiosk.Item.repository.ItemRepository
 kiosk_pjt/kiosk/reservation/repository/MemorySeatRepository.java
  kiosk_pjt.kiosk.reservation.repository.MemorySeatRepository
+<<<<<<< Updated upstream
 kiosk_pjt/kiosk/reservation/service/SeatService.java
  kiosk_pjt.kiosk.reservation.service.SeatService
 kiosk_pjt/kiosk/Seat/domain/Seat.java
  kiosk_pjt.kiosk.Seat.domain.Seat
+=======
+kiosk_pjt/kiosk/Seat/domain/Seat.java
+ kiosk_pjt.kiosk.Seat.domain.Seat
+kiosk_pjt/kiosk/reservation/service/SeatService.java
+ kiosk_pjt.kiosk.reservation.service.SeatService
+kiosk_pjt/kiosk/payment/controller/PaymentController.java
+ kiosk_pjt.kiosk.payment.controller.PaymentController
+>>>>>>> Stashed changes
 kiosk_pjt/kiosk/payment/service/PaymentService.java
  kiosk_pjt.kiosk.payment.service.PaymentService
 kiosk_pjt/kiosk/Item/domain/Item.java
