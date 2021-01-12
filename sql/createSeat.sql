@@ -2,8 +2,8 @@ DROP TABLE IF EXISTS SEAT CASCADE;
 
 CREATE TABLE IF NOT EXISTS SEAT(
     seatnum INT NOT NULL,
-    barcode varchar(20) NOT NULL,
-    isoccupied BOOLEAN NOT NULL,
+    barcode varchar(20) ,
+    isoccupied BOOLEAN ,
     PRIMARY KEY(seatnum)
 );
 

@@ -26,15 +26,15 @@ public class SeatServiceImpl implements SeatService {
     }
     @Override
     public Seat findSeat(int seatNum) {
-        return seatRepository.findByNum(seatNum);
+        return seatRepository.findById(seatNum);
     }
     @Override
     public boolean isAvailableSeat(int seatNum) {
-        return seatRepository.findByNum(seatNum) != null;
+        return seatRepository.findById(seatNum) != null;
     }
     @Override
     public List<Integer> currentSeatsList(){
-        List<Seat> seats = seatRepository.finaAll();
+        List<Seat> seats = seatRepository.findAll();
         List<Integer> currentSeats = new ArrayList<>();
         for (int i = 1; i < seatRepository.MaxSeat+1; i++) {
             currentSeats.add(i);
