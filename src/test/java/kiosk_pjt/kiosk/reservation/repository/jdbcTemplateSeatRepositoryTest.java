@@ -16,8 +16,8 @@ import java.util.List;
 @SpringBootTest
 public class jdbcTemplateSeatRepositoryTest {
 
-    ApplicationContext appconfig = new AnnotationConfigApplicationContext(AppConfig.class);
-    SeatRepository seatRepository= appconfig.getBean("seatRepository",SeatRepository.class);
+    ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+    SeatRepository seatRepository= ac.getBean(SeatRepository.class);
 
     @Test
     @DisplayName("seat 저장하는것 확인")

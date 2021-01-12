@@ -2,6 +2,8 @@ package kiosk_pjt.kiosk.reservation.repository;
 
 import kiosk_pjt.kiosk.Seat.domain.Seat;
 import kiosk_pjt.kiosk.reservation.repository.SeatRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.HashMap;

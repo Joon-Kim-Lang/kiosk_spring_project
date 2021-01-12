@@ -2,6 +2,7 @@ package kiosk_pjt.kiosk.reservation.service;
 
 import kiosk_pjt.kiosk.Seat.domain.Seat;
 import kiosk_pjt.kiosk.reservation.repository.SeatRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
@@ -12,6 +13,7 @@ import java.util.List;
 @Transactional
 public class SeatServiceImpl implements SeatService {
     private final SeatRepository seatRepository;
+    @Autowired
     public SeatServiceImpl(SeatRepository seatRepository) {
         this.seatRepository = seatRepository;
     }
