@@ -19,6 +19,11 @@ public class JdbcTemplateSeatRepository implements SeatRepository{
     }
 
     @Override
+    public Seat register(Seat seat) {
+        return null;
+    }
+
+    @Override
     public void save(Seat seat) {
         jdbcTemplate.update("UPDATE SEAT SET barcode=? WHERE SEATNUM=?",
                 seat.getBarcode(),seat.getSeatNum());
@@ -33,14 +38,14 @@ public class JdbcTemplateSeatRepository implements SeatRepository{
                 null,seat.getSeatNum());
     }
     @Override
-    public List<Seat> finaAll() {
+    public List<Seat> findAll() {
         List<Seat> seatList = jdbcTemplate.query("select * from seat", seatRowMapper());
         return seatList;
     }
 
     @Override
-    public Seat findByNum(int seatnum) {
-        List<Seat> seats = jdbcTemplate.query("select * from seat where seatnum = ?", seatRowMapper(),seatnum);
+    public Seat findById(int id) {
+        List<Seat> seats = jdbcTemplate.query("select * from seat where seatnum = ?", seatRowMapper(),id);
         return seats.get(0);
     }
 

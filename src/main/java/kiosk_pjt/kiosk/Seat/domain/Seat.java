@@ -1,10 +1,13 @@
 package kiosk_pjt.kiosk.Seat.domain;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-
+@Entity
 public class Seat {
+    @Id
     private int seatNum;
     private String barcode;
     private boolean isoccupied;
@@ -14,6 +17,11 @@ public class Seat {
         this.barcode = barcode;
         this.isoccupied = isoccupied;
     }
+
+    public Seat() {
+
+    }
+
     public int getSeatNum() {
         return seatNum;
     }

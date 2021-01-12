@@ -1,22 +1,14 @@
-<<<<<<< Updated upstream
-=======
 kiosk_pjt/kiosk/payment/service/PaymentServiceImplTest.java
  kiosk_pjt.kiosk.payment.service.PaymentServiceImplTest
->>>>>>> Stashed changes
-kiosk_pjt/kiosk/AppConfigTest.java
- kiosk_pjt.kiosk.AppConfigTest
+kiosk_pjt/kiosk/Item/service/ItemServiceImplTest.java
+ kiosk_pjt.kiosk.Item.service.ItemServiceImplTest
 kiosk_pjt/kiosk/KioskApplicationTests.java
  kiosk_pjt.kiosk.KioskApplicationTests
 kiosk_pjt/kiosk/Item/repository/JpaItemRepositoryTest.java
  kiosk_pjt.kiosk.Item.repository.JpaItemRepositoryTest
 kiosk_pjt/kiosk/payment/domain/PaymentInfoTest.java
  kiosk_pjt.kiosk.payment.domain.PaymentInfoTest
-<<<<<<< Updated upstream
-kiosk_pjt/kiosk/payment/service/PaymentServiceImplTest.java
- kiosk_pjt.kiosk.payment.service.PaymentServiceImplTest
+kiosk_pjt/kiosk/AppConfigTest.java
+ kiosk_pjt.kiosk.AppConfigTest
 kiosk_pjt/kiosk/reservation/repository/jdbcTemplateSeatRepositoryTest.java
  kiosk_pjt.kiosk.reservation.repository.jdbcTemplateSeatRepositoryTest
-=======
-kiosk_pjt/kiosk/Item/service/ItemServiceImplTest.java
- kiosk_pjt.kiosk.Item.service.ItemServiceImplTest
->>>>>>> Stashed changes
