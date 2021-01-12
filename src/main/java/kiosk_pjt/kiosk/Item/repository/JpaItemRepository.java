@@ -18,7 +18,6 @@ public class JpaItemRepository  implements ItemRepository{
         this.em = em;
     }
 
-
     @Override@Transactional
     public Item save(Item item) {
         em.persist(item);
