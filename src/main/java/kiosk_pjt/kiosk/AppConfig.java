@@ -1,13 +1,9 @@
 package kiosk_pjt.kiosk;
-
-<<<<<<< Updated upstream
 import kiosk_pjt.kiosk.reservation.repository.JdbcTemplateSeatRepository;
-=======
 import kiosk_pjt.kiosk.Item.repository.ItemRepository;
 import kiosk_pjt.kiosk.Item.service.ItemService;
 import kiosk_pjt.kiosk.Item.service.ItemServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
->>>>>>> Stashed changes
 import kiosk_pjt.kiosk.payment.repository.MemoryPaymentRepository;
 import kiosk_pjt.kiosk.payment.repository.PaymentRepository;
 import kiosk_pjt.kiosk.reservation.repository.SeatRepository;
@@ -23,29 +19,6 @@ import javax.sql.DataSource;
 @Configuration
 @ComponentScan
 public class AppConfig {
-<<<<<<< Updated upstream
 
-//    private final DataSource dataSource;
-//    public AppConfig(DataSource dataSource) {
-//        this.dataSource = dataSource;
-//    }
-//    @Bean
-//    public PaymentRepository paymentRepository(){
-//        return new MemoryPaymentRepository();
-//    }
-//    @Bean
-//    public PaymentService paymentService(){
-//        return new PaymentServiceImpl(paymentRepository());
-//    }
-//    @Bean
-//    public SeatService seatService(){
-//        return new SeatServiceImpl(seatRepository());
-//    }
-//    @Bean
-//    public SeatRepository seatRepository(){
-//        return new JdbcTemplateSeatRepository(dataSource);
-//    }
-=======
->>>>>>> Stashed changes
 
 }
