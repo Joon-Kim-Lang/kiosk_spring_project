@@ -9,5 +9,5 @@ public interface SeatService {
     void leave(Seat seat);
     Seat findSeat(int num);
     boolean isAvailableSeat(int num);
-    List<Integer> currentSeatNum();
+    List<Integer> currentSeatsList();
 }
