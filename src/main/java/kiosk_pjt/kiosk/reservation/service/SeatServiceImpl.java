@@ -34,19 +34,9 @@ public class SeatServiceImpl implements SeatService {
         return seatRepository.findById(seatNum) != null;
     }
     @Override
-<<<<<<< HEAD
-    public List<Integer> currentSeatsList(){
-        List<Seat> seats = seatRepository.findAll();
-        List<Integer> currentSeats = new ArrayList<>();
-        for (int i = 1; i < seatRepository.MaxSeat+1; i++) {
-            currentSeats.add(i);
-        }
-        seats.forEach((v)->currentSeats.remove(v.getSeatNum()));
-        return currentSeats;
-=======
+
     public List<Seat> currentSeatsList(){
         List<Seat> seats = seatRepository.findAll();
         return seats;
->>>>>>> kks
     }
 }

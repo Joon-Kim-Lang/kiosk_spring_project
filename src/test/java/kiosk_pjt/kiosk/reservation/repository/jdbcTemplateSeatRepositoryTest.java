@@ -18,7 +18,6 @@ import java.util.List;
 @SpringBootTest
 public class jdbcTemplateSeatRepositoryTest {
 
-<<<<<<< HEAD
     @Autowired
     SeatRepository seatRepository;
 // DB 초기화 시키는 코드니깐 그냥 건들지 말고 가만히 있을 것
@@ -39,11 +38,8 @@ public class jdbcTemplateSeatRepositoryTest {
 //        }
 //        Assertions.assertThat(seatRepository.findAll().size()).isEqualTo(20);
 //    }
-=======
 
 
-    @Autowired
-    SeatRepository seatRepository;
 // DB 초기화 시키는 코드니깐 그냥 건들지 말고 가만히 있을 것
     @Test
     @Commit
@@ -62,8 +58,6 @@ public class jdbcTemplateSeatRepositoryTest {
         }
         Assertions.assertThat(seatRepository.findAll().size()).isEqualTo(20);
     }
->>>>>>> kks
-
 
     @Test
     @DisplayName("seat 저장하는것 확인")
