@@ -2,6 +2,7 @@ package kiosk_pjt.kiosk.reservation.service;
 
 import kiosk_pjt.kiosk.Seat.domain.Seat;
 import kiosk_pjt.kiosk.reservation.repository.SeatRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
@@ -9,9 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-@Transactional
 public class SeatServiceImpl implements SeatService {
     private final SeatRepository seatRepository;
+
     public SeatServiceImpl(SeatRepository seatRepository) {
         this.seatRepository = seatRepository;
     }
@@ -33,6 +34,7 @@ public class SeatServiceImpl implements SeatService {
         return seatRepository.findById(seatNum) != null;
     }
     @Override
+<<<<<<< HEAD
     public List<Integer> currentSeatsList(){
         List<Seat> seats = seatRepository.findAll();
         List<Integer> currentSeats = new ArrayList<>();
@@ -41,5 +43,10 @@ public class SeatServiceImpl implements SeatService {
         }
         seats.forEach((v)->currentSeats.remove(v.getSeatNum()));
         return currentSeats;
+=======
+    public List<Seat> currentSeatsList(){
+        List<Seat> seats = seatRepository.findAll();
+        return seats;
+>>>>>>> kks
     }
 }

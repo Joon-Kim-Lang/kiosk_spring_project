@@ -18,6 +18,7 @@ import java.util.List;
 @SpringBootTest
 public class jdbcTemplateSeatRepositoryTest {
 
+<<<<<<< HEAD
     @Autowired
     SeatRepository seatRepository;
 // DB 초기화 시키는 코드니깐 그냥 건들지 말고 가만히 있을 것
@@ -38,6 +39,30 @@ public class jdbcTemplateSeatRepositoryTest {
 //        }
 //        Assertions.assertThat(seatRepository.findAll().size()).isEqualTo(20);
 //    }
+=======
+
+
+    @Autowired
+    SeatRepository seatRepository;
+// DB 초기화 시키는 코드니깐 그냥 건들지 말고 가만히 있을 것
+    @Test
+    @Commit
+    @DisplayName("Jpa seat레포 잘 동작하는지 확인")
+    void jpaRepositoryTest(){
+        //given
+        for(int i = 1; i < 21; i++){
+            Seat seat = new Seat(i, null,false);
+            seatRepository.register(seat);
+        }
+
+        //then
+        List<Seat> list = seatRepository.findAll();
+        for (Seat item : list) {
+            System.out.println(item.getSeatNum());
+        }
+        Assertions.assertThat(seatRepository.findAll().size()).isEqualTo(20);
+    }
+>>>>>>> kks
 
 
     @Test
