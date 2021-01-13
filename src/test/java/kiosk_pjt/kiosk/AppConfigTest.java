@@ -2,7 +2,6 @@ package kiosk_pjt.kiosk;
 
 import kiosk_pjt.kiosk.Item.domain.Item;
 import kiosk_pjt.kiosk.Item.repository.ItemRepository;
-import kiosk_pjt.kiosk.Item.repository.JpaItemRepository;
 import kiosk_pjt.kiosk.Item.service.ItemService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

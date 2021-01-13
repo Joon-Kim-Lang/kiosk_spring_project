@@ -13,6 +13,11 @@ public class MemorySeatRepository implements SeatRepository {
     Map<Integer, Seat> store = new HashMap<>();
 
     @Override
+    public Seat register(Seat seat) {
+        return null;
+    }
+
+    @Override
     public void save(Seat seat) {
         if(store.size()>SeatRepository.MaxSeat)return;
         store.put(seat.getSeatNum(), seat);
@@ -25,14 +30,12 @@ public class MemorySeatRepository implements SeatRepository {
     }
 
     @Override
-    public ArrayList finaAll() {
+    public ArrayList findAll() {
         return new ArrayList(store.values());
     }
 
     @Override
-    public Seat findByNum(int num) {
-        return store.get(num);
+    public Seat findById(int id) {
+        return store.get(id);
     }
-
-
 }

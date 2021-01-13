@@ -5,8 +5,9 @@ import java.util.List;
 
 public interface SeatRepository {
     int MaxSeat = 20;
+    Seat register(Seat seat);
     void save(Seat seat);
     void remove(Seat seat);
-    List<Seat> finaAll();
-    Seat findByNum(int num);
+    List<Seat> findAll();
+    Seat findById(int seatNum);
 }

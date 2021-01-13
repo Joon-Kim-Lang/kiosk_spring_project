@@ -1,0 +1,28 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.seat__container{
+    display: grid;
+    grid-template-rows: repeat(5,1fr);
+    grid-template-columns: repeat(4,1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+}
+.seat{
+    width: 100px;
+    height: 100px;
+    background-color: blanchedalmond;
+    border: 1px solid black;
+    margin: 5px;
+}
+.red{
+    background-color: red;
+}

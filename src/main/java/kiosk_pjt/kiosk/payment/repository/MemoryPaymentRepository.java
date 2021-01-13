@@ -1,12 +1,14 @@
 package kiosk_pjt.kiosk.payment.repository;
 
 import kiosk_pjt.kiosk.payment.domain.PaymentInfo;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Component
 public class MemoryPaymentRepository implements PaymentRepository{
 
     private static Map<String, PaymentInfo> store = new HashMap<>();

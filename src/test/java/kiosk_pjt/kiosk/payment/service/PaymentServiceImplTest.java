@@ -25,45 +25,45 @@ class PaymentServiceImplTest {
     ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
     PaymentService paymentService = applicationContext.getBean(PaymentService.class);
 
-    @Test
-    @DisplayName("저장소 기록테스트")
-    void joinTest(){
-        //given
-        Item item = new Item(Kind.hou_1, 2000);
-        PaymentInfo paymentInfo= new PaymentInfo("김형준", "01038067268", LocalDateTime.now(), item);
-        //when
-        String barcode = paymentService.join(paymentInfo);
-        //then
-        assertThat(barcode).isEqualTo(paymentInfo.getBarcode());
-    }
-
-    @Test
-    @DisplayName("저장소 출력테스트")
-    void showListTest(){
-        //given
-        Item item1 = new Item(Kind.hou_1, 2000);
-        Item item2 = new Item(Kind.hou_2, 3000);
-        PaymentInfo paymentInfo1= new PaymentInfo("김형준", "01038067268", LocalDateTime.now(), item1);
-        PaymentInfo paymentInfo2= new PaymentInfo("금교석", "01071214552", LocalDateTime.now(), item2);
-        //when
-        String barcode1 = paymentService.join(paymentInfo1);
-        String barcode2 = paymentService.join(paymentInfo2);
-        //then
-        List<PaymentInfo> paymentInfos = paymentService.showPayments();
-        for (PaymentInfo paymentInfo : paymentInfos) {
-            System.out.println("paymentInfo = " + paymentInfo.getBarcode());
-        }
-    }
-    @Test
-    @DisplayName("바코드로 payment 찾기")
-    void findByBarcode(){
-        Item item1 = new Item(Kind.hou_1, 2000);
-        Item item2 = new Item(Kind.hou_2, 3000);
-        PaymentInfo paymentInfo1= new PaymentInfo("김형준", "01038067268", LocalDateTime.now(), item1);
-        String barcode1 = paymentService.join(paymentInfo1);
-        PaymentInfo findPaymentInfo = paymentService.findPaymentInfo(barcode1);
-        Assertions.assertThat(findPaymentInfo).isEqualTo(paymentInfo1);
-
-    }
+//    @Test
+//    @DisplayName("저장소 기록테스트")
+//    void joinTest(){
+//        //given
+//        Item item = new Item(Kind.hou_1, 2000);
+//        PaymentInfo paymentInfo= new PaymentInfo("김형준", "01038067268", LocalDateTime.now(), item);
+//        //when
+//        String barcode = paymentService.join(paymentInfo);
+//        //then
+//        assertThat(barcode).isEqualTo(paymentInfo.getBarcode());
+//    }
+//
+//    @Test
+//    @DisplayName("저장소 출력테스트")
+//    void showListTest(){
+//        //given
+//        Item item1 = new Item(Kind.hou_1, 2000);
+//        Item item2 = new Item(Kind.hou_2, 3000);
+//        PaymentInfo paymentInfo1= new PaymentInfo("김형준", "01038067268", LocalDateTime.now(), item1);
+//        PaymentInfo paymentInfo2= new PaymentInfo("금교석", "01071214552", LocalDateTime.now(), item2);
+//        //when
+//        String barcode1 = paymentService.join(paymentInfo1);
+//        String barcode2 = paymentService.join(paymentInfo2);
+//        //then
+//        List<PaymentInfo> paymentInfos = paymentService.showPayments();
+//        for (PaymentInfo paymentInfo : paymentInfos) {
+//            System.out.println("paymentInfo = " + paymentInfo.getBarcode());
+//        }
+//    }
+//    @Test
+//    @DisplayName("바코드로 payment 찾기")
+//    void findByBarcode(){
+//        Item item1 = new Item(Kind.hou_1, 2000);
+//        Item item2 = new Item(Kind.hou_2, 3000);
+//        PaymentInfo paymentInfo1= new PaymentInfo("김형준", "01038067268", LocalDateTime.now(), item1);
+//        String barcode1 = paymentService.join(paymentInfo1);
+//        PaymentInfo findPaymentInfo = paymentService.findPaymentInfo(barcode1);
+//        Assertions.assertThat(findPaymentInfo).isEqualTo(paymentInfo1);
+//
+//    }
 
 }

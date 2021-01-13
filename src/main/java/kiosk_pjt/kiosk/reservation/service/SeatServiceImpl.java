@@ -10,10 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-@Transactional
 public class SeatServiceImpl implements SeatService {
     private final SeatRepository seatRepository;
-    @Autowired
+
     public SeatServiceImpl(SeatRepository seatRepository) {
         this.seatRepository = seatRepository;
     }
@@ -28,20 +27,15 @@ public class SeatServiceImpl implements SeatService {
     }
     @Override
     public Seat findSeat(int seatNum) {
-        return seatRepository.findByNum(seatNum);
+        return seatRepository.findById(seatNum);
     }
     @Override
     public boolean isAvailableSeat(int seatNum) {
-        return seatRepository.findByNum(seatNum) != null;
+        return seatRepository.findById(seatNum) != null;
     }
     @Override
-    public List<Integer> currentSeatsList(){
-        List<Seat> seats = seatRepository.finaAll();
-        List<Integer> currentSeats = new ArrayList<>();
-        for (int i = 1; i < seatRepository.MaxSeat+1; i++) {
-            currentSeats.add(i);
-        }
-        seats.forEach((v)->currentSeats.remove(v.getSeatNum()));
-        return currentSeats;
+    public List<Seat> currentSeatsList(){
+        List<Seat> seats = seatRepository.findAll();
+        return seats;
     }
 }

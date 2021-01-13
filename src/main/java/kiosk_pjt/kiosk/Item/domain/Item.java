@@ -12,10 +12,13 @@ public class Item {
     @Enumerated(EnumType.STRING)
     private Kind kind;
     private int price;
+    private String name;
 
-    public Item(Kind kind, int price) {
+
+    public Item(Kind kind, int price, String name) {
         this.kind = kind;
         this.price = price;
+        this.name = name;
     }
 
     public Item() {
@@ -36,5 +39,13 @@ public class Item {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
