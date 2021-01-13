@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Component
+
 public class MemoryPaymentRepository implements PaymentRepository{
 
     private static Map<String, PaymentInfo> store = new HashMap<>();
