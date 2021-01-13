@@ -3,10 +3,12 @@ package kiosk_pjt.kiosk.payment.domain;
 import kiosk_pjt.kiosk.Item.domain.Item;
 import kiosk_pjt.kiosk.Item.domain.Kind;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
-
+@Entity
 public class PaymentInfo {
-
+    @Id
     private String barcode;
     private String name;
     private String phoneNumber;
@@ -28,7 +30,7 @@ public class PaymentInfo {
     }
 
     public void setBarcode(String barcode) {
-        this.barcode = barcode;
+        this.barcode = this.getItemKind()+"_"+this.getName()+"_"+this.getPhoneNumber()+this.getPaymentTime();
     }
 
     public String getName() {
@@ -52,7 +54,7 @@ public class PaymentInfo {
     }
 
     public void setPaymentTime(LocalDateTime paymentTime) {
-        this.paymentTime = paymentTime;
+        this.paymentTime = LocalDateTime.now();
     }
 
     public Kind getItemKind() {
