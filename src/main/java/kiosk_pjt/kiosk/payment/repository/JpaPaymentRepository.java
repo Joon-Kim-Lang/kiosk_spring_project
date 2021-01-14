@@ -4,6 +4,7 @@ import kiosk_pjt.kiosk.Item.domain.Item;
 import kiosk_pjt.kiosk.payment.domain.PaymentInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import java.util.List;
@@ -17,7 +18,7 @@ public class JpaPaymentRepository implements PaymentRepository{
         this.em = em;
     }
 
-    @Override
+    @Override@Transactional
     public PaymentInfo save(PaymentInfo paymentInfo) {
         em.persist(paymentInfo);
         return paymentInfo;

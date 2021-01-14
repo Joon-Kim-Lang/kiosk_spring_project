@@ -22,13 +22,10 @@ kiosk_pjt/kiosk/Item/repository/ItemRepository.java
  kiosk_pjt.kiosk.Item.repository.ItemRepository
 kiosk_pjt/kiosk/reservation/repository/MemorySeatRepository.java
  kiosk_pjt.kiosk.reservation.repository.MemorySeatRepository
-kiosk_pjt/kiosk/Seat/domain/Seat.java
- kiosk_pjt.kiosk.Seat.domain.Seat
-<<<<<<< HEAD
 kiosk_pjt/kiosk/reservation/service/SeatService.java
  kiosk_pjt.kiosk.reservation.service.SeatService
-=======
->>>>>>> kks
+kiosk_pjt/kiosk/Seat/domain/Seat.java
+ kiosk_pjt.kiosk.Seat.domain.Seat
 kiosk_pjt/kiosk/payment/controller/PaymentController.java
  kiosk_pjt.kiosk.payment.controller.PaymentController
 kiosk_pjt/kiosk/payment/service/PaymentService.java
@@ -46,3 +43,5 @@ kiosk_pjt/kiosk/payment/repository/PaymentRepository.java
  kiosk_pjt.kiosk.payment.repository.PaymentRepository
 kiosk_pjt/kiosk/payment/domain/PaymentInfo.java
  kiosk_pjt.kiosk.payment.domain.PaymentInfo
+kiosk_pjt/kiosk/payment/repository/JpaPaymentRepository.java
+ kiosk_pjt.kiosk.payment.repository.JpaPaymentRepository
