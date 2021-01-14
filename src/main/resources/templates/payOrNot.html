@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>결제창</title>
+    <link rel="stylesheet" href="/CSS/payOrNot.css">
+</head>
+<body>
+<h2>결제하시겠습니까??</h2>
+<div class="menu">
+
+    <form action="#" th:action="@{/paymentRegister}"  method="post">
+        <input type="hidden" th:field = "*{paymentInfo.name}" th:value = "${paymentInfo.getName()}">
+        <input type="hidden" th:field = "*{paymentInfo.phoneNumber}" th:value = "${paymentInfo.getPhoneNumber()}">
+        <input type="hidden" th:field = "*{paymentInfo.itemKind}" th:value = "${paymentInfo.getItemKind()}">
+        <input type = "hidden" name ="seatNum"  th:value="${seatNum}">
+        <input class = "yes" type="submit" value="예"  />
+    </form>
+    <a href="http://localhost:8080/">아니오</a>
+
+
+
+</div>
+</body>
+</html>

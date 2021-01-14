@@ -2,22 +2,30 @@ package kiosk_pjt.kiosk.payment.controller;
 
 import kiosk_pjt.kiosk.Item.domain.Item;
 import kiosk_pjt.kiosk.Item.service.ItemService;
+import kiosk_pjt.kiosk.Seat.domain.Seat;
 import kiosk_pjt.kiosk.payment.domain.PaymentInfo;
+import kiosk_pjt.kiosk.payment.service.PaymentService;
+import kiosk_pjt.kiosk.reservation.service.SeatService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
 public class PaymentController {
 
     private final ItemService itemService;
+    private final SeatService seatService;
+    private final PaymentService paymentService;
 
-    public PaymentController(ItemService itemService) {
+    public PaymentController(ItemService itemService, SeatService seatService, PaymentService paymentService) {
         this.itemService = itemService;
+        this.seatService = seatService;
+        this.paymentService = paymentService;
     }
 
     @RequestMapping(value = "/basicInfo", method = RequestMethod.GET)
@@ -37,33 +45,40 @@ public class PaymentController {
 
     @RequestMapping(value = "/seatSelect", method = RequestMethod.POST)
     public String seatSelect(@ModelAttribute("paymentInfo") PaymentInfo paymentInfo, Model model) {
-        System.out.println("paymentInfoName = " + paymentInfo.getName());
-        System.out.println("paymentInfo = " + paymentInfo.getPhoneNumber());
-        System.out.println("paymentInfo = " + paymentInfo.getItemKind());
-        return "basicInfoTemplate";
+
+        List<Seat> seats = seatService.currentSeatsList();
+        model.addAttribute("paymentInfo", paymentInfo);
+        model.addAttribute("seats", seats);
+
+        return "seatSelectTemplate_payment";
     }
 
+    @RequestMapping(value = "/getPay", method = RequestMethod.POST)
+    public String getPay(@ModelAttribute("paymentInfo") PaymentInfo paymentInfo, HttpServletRequest request,Model model) {
 
-//    static class Info{
-//        private String name;
-//        private String phoneNumber;
-//
-//        public String getName() {
-//            return name;
-//        }
-//
-//        public void setName(String name) {
-//            this.name = name;
-//        }
-//
-//        public String getPhoneNumber() {
-//            return phoneNumber;
-//        }
-//
-//        public void setPhoneNumber(String phoneNumber) {
-//            this.phoneNumber = phoneNumber;
-//        }
-//    }
+        model.addAttribute("paymentInfo", paymentInfo);
+        model.addAttribute("seatNum", request.getParameter("seatNum"));
+
+        return "payOrNot";
+    }
+
+    @RequestMapping(value = "/paymentRegister", method = RequestMethod.POST)
+    public String basicInfo(@ModelAttribute("paymentInfo") PaymentInfo paymentInfo,HttpServletRequest request) {
+//        System.out.println("paymentInfoName = " + paymentInfo.getName());
+//        System.out.println("paymentInfo = " + paymentInfo.getPhoneNumber());
+//        System.out.println("paymentInfo = " + paymentInfo.getItemKind());
+//        System.out.println("seatNum = " + request.getParameter("seatNum"));
+        int seatNum =   Integer.parseInt(request.getParameter("seatNum"));
+        paymentInfo.setPaymentTime();
+        paymentInfo.setBarcode();
+        Seat seat = new Seat(seatNum,paymentInfo.getBarcode(),true);
+
+
+        paymentService.join(paymentInfo);
+        seatService.join(seat);
+
+        return "index";
+    }
 
 
 }

@@ -29,7 +29,7 @@ public class PaymentInfo {
         return barcode;
     }
 
-    public void setBarcode(String barcode) {
+    public void setBarcode() {
         this.barcode = this.getItemKind()+"_"+this.getName()+"_"+this.getPhoneNumber()+this.getPaymentTime();
     }
 
@@ -53,7 +53,7 @@ public class PaymentInfo {
         return paymentTime;
     }
 
-    public void setPaymentTime(LocalDateTime paymentTime) {
+    public void setPaymentTime() {
         this.paymentTime = LocalDateTime.now();
     }
 

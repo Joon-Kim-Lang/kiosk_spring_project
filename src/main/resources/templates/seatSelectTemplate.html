@@ -3,11 +3,25 @@
 <head>
     <title>Getting Started: Serving Web Content</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="/CSS/seat.css">
+    <link rel="stylesheet" href="../static/CSS/seat.css" th:href="@{/CSS/seat.css}">
+    <script src="../static/JAVASCRIPT/seat.js" th:src="@{/JAVASCRIPT/seat.js}" defer></script>
 </head>
 <body>
-    <div th:each="seat : ${seats}" class="seat__container">
-        <button><div th:classappend ="${seat.isoccupied} ? red" class="seat"></div></button>
+    <div class="seat__container">
+        <th:block th:each="seat : ${seats}">
+            <button th:classappend ="${seat.isoccupied} ? red" class="seat" th:text="${seat.seatNum}">1</button>
+        </th:block >
     </div>
+    <div class="modal hidden">
+		<div class="md_overlay"></div>
+		<div class="md_content">
+			<h2>이 좌석을 선택하시겠습니까?</h2>
+			<div class="modal_text">
+			</div>
+            <button class="modal_ok"><p style="font-size:20px">⭕</p></button>
+            <button class="modal_concel"><p style="font-size:20px">❌</p></button>
+		</div>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </body>
 </html>
