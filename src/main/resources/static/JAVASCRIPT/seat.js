@@ -4,12 +4,10 @@ const overlay = modal.querySelector(".md_overlay");
 const cancleButton = modal.querySelector(".modal_concel");
 const okButton = modal.querySelector(".modal_ok");
 const modalText = document.querySelector(".modal_text")
-
-
-
-//event
-
+const barcode = document.querySelector("#barcode")
 let seatNum = 0;
+
+
 
 seatContainer.addEventListener('click',(e)=>{
     if(e.currentTarget!=e.target){
@@ -23,10 +21,19 @@ cancleButton.addEventListener('click',()=>{
 })
 
 okButton.addEventListener('click',()=>{
-    // 여기 수정해야 하는 부분
-    axios.get('/seating/seatlist/num',{
-        params:{ seatNum,}
+    // 여기 수정해야 하는 
+    console.log(seatNum.toString())
+    console.log(barcode.value)
+    axios({
+        method: 'post',
+        url : "/seating/seatlist/seatInfoSave",
+        data:{
+            seatNum:seatNum.toString(),
+            barcode:barcode.value.toString()
+        }
     }).then(()=>{
-        location.href = "/";
+        console.log("success")
+    }).catch((e)=>{
+        console.error(e)
     })
 })

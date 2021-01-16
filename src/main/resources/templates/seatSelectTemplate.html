@@ -8,6 +8,7 @@
     <script src="../static/JAVASCRIPT/seat.js" th:src="@{/JAVASCRIPT/seat.js}" defer></script>
 </head>
 <body>
+    <input type="hidden" th:value="${barcode}" id="barcode">
     <div class="seat__container">
         <th:block th:each="seat : ${seats}">
             <button th:classappend ="${seat.isoccupied} ? red" class="seat" th:text="${seat.seatNum}">1</button>

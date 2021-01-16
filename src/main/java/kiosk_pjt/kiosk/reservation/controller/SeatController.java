@@ -4,31 +4,37 @@ import kiosk_pjt.kiosk.Seat.domain.Seat;
 import kiosk_pjt.kiosk.payment.domain.PaymentInfo;
 import kiosk_pjt.kiosk.payment.service.PaymentService;
 import kiosk_pjt.kiosk.reservation.service.SeatService;
+import kiosk_pjt.kiosk.timetype.domain.TimeType;
+import kiosk_pjt.kiosk.timetype.repository.TimeTypeRepository;
+import kiosk_pjt.kiosk.timetype.service.TimeTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.NoResultException;
-import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Enumeration;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/seating")
 public class SeatController {
     private final SeatService seatService;
     private final PaymentService paymentService;
+    private final TimeTypeService timeTypeService;
+    private final TimeTypeRepository timeTypeRepository;
+
 
     @Autowired
-    public SeatController(SeatService seatService,PaymentService paymentService) {
+    public SeatController(SeatService seatService, PaymentService paymentService, TimeTypeService timeTypeService,TimeTypeRepository timeTypeRepository) {
         this.seatService = seatService;
         this.paymentService = paymentService;
+        this.timeTypeService = timeTypeService;
+        this.timeTypeRepository = timeTypeRepository;
     }
 
     @GetMapping("/seatlist")
@@ -38,10 +44,20 @@ public class SeatController {
         return "seatSelectTemplate";
     }
 
-    @GetMapping("/seatlist/num")
-    public String jsonSeatlist(@RequestParam("seatNum")String seatNum){
+    @PostMapping("/seatlist/seatInfoSave")
+    public String seatInfoSave(@RequestParam("seatNum")String seatNum,@RequestParam("barcode")String barcode){
         System.out.println("seatNum = " + seatNum);
-        return seatNum;
+        System.out.println("barcode = " + barcode);
+
+        String[] s = barcode.split("_");
+        String menuInfo = s[0];
+        Seat seat = new Seat(Integer.parseInt(seatNum), barcode, true);
+        seatService.join(seat);
+        if(menuInfo.equals("time")){
+            timeTypeService.setStartTime(barcode);
+            timeTypeService.setRemainTime(barcode);
+        }
+        return "index";
     }
 
     @GetMapping("/barcodeInfo")
@@ -49,19 +65,27 @@ public class SeatController {
         return "barcodeInfo";
     }
 
-    @RequestMapping(value="/barcodeInfoCheck",method = RequestMethod.POST)
-    public String seatInfoCheck(@RequestParam(value = "barcode") String barcode) throws ParseException {
-        PaymentInfo paymentInfo;Seat seat;
+    @PostMapping("/barcodeInfoCheck")
+    public String seatInfoCheck(@RequestParam(value = "barcode") String barcode,Model model) throws ParseException {
+        PaymentInfo paymentInfo;Seat seat = null;
         paymentInfo = paymentService.findPaymentInfo(barcode);
         //바코드가 없어
-        if(paymentInfo==null){ return "index"; }
+        if(paymentInfo==null){
+            System.out.println("payment is not found");
+            return "index"; }
         //바코드가 있어
         if(isBarcodeAvailable(barcode)==true){
-
-            return "success";
-        }else{
-            return "index";
+            System.out.println("barcode is available");
+            try {
+                seat = seatService.findSeat(barcode);
+            }catch (Exception e){
+                model.addAttribute("barcode", barcode);
+                List<Seat> seats = seatService.currentSeatsList();
+                model.addAttribute("seats", seats);
+                return "seatSelectTemplate";
+            }
         }
+        return "index";
     };
 
     private boolean isBarcodeAvailable(String barcode) throws ParseException {
@@ -79,7 +103,11 @@ public class SeatController {
         if(menuInfo.equals("hou")){
             cal.add(Calendar.HOUR,time);
         }else if(menuInfo.equals("time")){
-
+            TimeType byId = timeTypeRepository.findById(barcode);
+            long remainTime = byId.getRemainTime();
+            int remain = Long.valueOf(Optional.ofNullable(remainTime).orElse(0L)).intValue();
+            cal.add(Calendar.HOUR,remain);
+            startTime =  Date.from( byId.getStartTime().atZone( ZoneId.systemDefault()).toInstant());
         }else if(menuInfo.equals("day")){
             cal.add(Calendar.DATE,time);
         }
@@ -95,8 +123,7 @@ public class SeatController {
         String[] s = barcode.split("_");
         String date = s[4].split("\\.")[0];
         date = date.replace("T", " ");
-        System.out.println(date);
-        SimpleDateFormat form = new SimpleDateFormat("YYYY-MM-ddHH:mm:ss");
+        SimpleDateFormat form = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date to = form.parse(date);
         return to;
     }
