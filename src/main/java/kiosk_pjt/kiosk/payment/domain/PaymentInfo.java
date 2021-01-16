@@ -30,7 +30,7 @@ public class PaymentInfo {
     }
 
     public void setBarcode() {
-        this.barcode = this.getItemKind()+"_"+this.getName()+"_"+this.getPhoneNumber()+this.getPaymentTime();
+        this.barcode = this.getItemKind()+"_"+this.getName()+"_"+this.getPhoneNumber()+"_"+this.getPaymentTime();
     }
 
     public String getName() {

@@ -1,21 +1,9 @@
-kiosk_pjt/kiosk/payment/repository/MemoryPaymentRepository.java
- kiosk_pjt.kiosk.payment.repository.MemoryPaymentRepository
-kiosk_pjt/kiosk/Item/domain/Kind.java
- kiosk_pjt.kiosk.Item.domain.Kind
+kiosk_pjt/kiosk/timetype/domain/TimeType.java
+ kiosk_pjt.kiosk.timetype.domain.TimeType
 kiosk_pjt/kiosk/Item/service/ItemService.java
  kiosk_pjt.kiosk.Item.service.ItemService
-kiosk_pjt/kiosk/reservation/repository/JpaSeatRepository.java
- kiosk_pjt.kiosk.reservation.repository.JpaSeatRepository
-kiosk_pjt/kiosk/AppConfig.java
- kiosk_pjt.kiosk.AppConfig
-kiosk_pjt/kiosk/payment/service/PaymentServiceImpl.java
- kiosk_pjt.kiosk.payment.service.PaymentServiceImpl
 kiosk_pjt/kiosk/reservation/repository/SeatRepository.java
  kiosk_pjt.kiosk.reservation.repository.SeatRepository
-kiosk_pjt/kiosk/Item/service/ItemServiceImpl.java
- kiosk_pjt.kiosk.Item.service.ItemServiceImpl
-kiosk_pjt/kiosk/KioskApplication.java
- kiosk_pjt.kiosk.KioskApplication
 kiosk_pjt/kiosk/reservation/service/SeatServiceImpl.java
  kiosk_pjt.kiosk.reservation.service.SeatServiceImpl
 kiosk_pjt/kiosk/Item/repository/ItemRepository.java
@@ -26,22 +14,44 @@ kiosk_pjt/kiosk/reservation/service/SeatService.java
  kiosk_pjt.kiosk.reservation.service.SeatService
 kiosk_pjt/kiosk/Seat/domain/Seat.java
  kiosk_pjt.kiosk.Seat.domain.Seat
+kiosk_pjt/kiosk/Item/domain/Item.java
+ kiosk_pjt.kiosk.Item.domain.Item
+kiosk_pjt/kiosk/timetype/service/TimeTypeService.java
+ kiosk_pjt.kiosk.timetype.service.TimeTypeService
+kiosk_pjt/kiosk/payment/repository/PaymentRepository.java
+ kiosk_pjt.kiosk.payment.repository.PaymentRepository
+kiosk_pjt/kiosk/payment/repository/MemoryPaymentRepository.java
+ kiosk_pjt.kiosk.payment.repository.MemoryPaymentRepository
+kiosk_pjt/kiosk/Item/domain/Kind.java
+ kiosk_pjt.kiosk.Item.domain.Kind
+kiosk_pjt/kiosk/reservation/repository/JpaSeatRepository.java
+ kiosk_pjt.kiosk.reservation.repository.JpaSeatRepository
+kiosk_pjt/kiosk/AppConfig.java
+ kiosk_pjt.kiosk.AppConfig
+kiosk_pjt/kiosk/payment/service/PaymentServiceImpl.java
+ kiosk_pjt.kiosk.payment.service.PaymentServiceImpl
+kiosk_pjt/kiosk/Item/service/ItemServiceImpl.java
+ kiosk_pjt.kiosk.Item.service.ItemServiceImpl
+kiosk_pjt/kiosk/timetype/repository/TimeTypeRepository.java
+ kiosk_pjt.kiosk.timetype.repository.TimeTypeRepository
+kiosk_pjt/kiosk/KioskApplication.java
+ kiosk_pjt.kiosk.KioskApplication
 kiosk_pjt/kiosk/payment/controller/PaymentController.java
  kiosk_pjt.kiosk.payment.controller.PaymentController
 kiosk_pjt/kiosk/payment/service/PaymentService.java
  kiosk_pjt.kiosk.payment.service.PaymentService
 kiosk_pjt/kiosk/reservation/controller/SeatController.java
  kiosk_pjt.kiosk.reservation.controller.SeatController
-kiosk_pjt/kiosk/Item/domain/Item.java
- kiosk_pjt.kiosk.Item.domain.Item
 kiosk_pjt/kiosk/Item/repository/JpaItemRepository.java
  kiosk_pjt.kiosk.Item.repository.JpaItemRepository
 kiosk_pjt/kiosk/reservation/repository/JdbcTemplateSeatRepository.java
  kiosk_pjt.kiosk.reservation.repository.JdbcTemplateSeatRepository
  kiosk_pjt.kiosk.reservation.repository.JdbcTemplateSeatRepository$1
-kiosk_pjt/kiosk/payment/repository/PaymentRepository.java
- kiosk_pjt.kiosk.payment.repository.PaymentRepository
+kiosk_pjt/kiosk/timetype/repository/JpaTimeTypeRepository.java
+ kiosk_pjt.kiosk.timetype.repository.JpaTimeTypeRepository
 kiosk_pjt/kiosk/payment/domain/PaymentInfo.java
  kiosk_pjt.kiosk.payment.domain.PaymentInfo
 kiosk_pjt/kiosk/payment/repository/JpaPaymentRepository.java
  kiosk_pjt.kiosk.payment.repository.JpaPaymentRepository
+kiosk_pjt/kiosk/timetype/service/TimeTypeServiceImpl.java
+ kiosk_pjt.kiosk.timetype.service.TimeTypeServiceImpl

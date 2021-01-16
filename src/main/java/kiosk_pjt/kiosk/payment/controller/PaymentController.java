@@ -6,6 +6,8 @@ import kiosk_pjt.kiosk.Seat.domain.Seat;
 import kiosk_pjt.kiosk.payment.domain.PaymentInfo;
 import kiosk_pjt.kiosk.payment.service.PaymentService;
 import kiosk_pjt.kiosk.reservation.service.SeatService;
+import kiosk_pjt.kiosk.timetype.domain.TimeType;
+import kiosk_pjt.kiosk.timetype.service.TimeTypeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,11 +23,13 @@ public class PaymentController {
     private final ItemService itemService;
     private final SeatService seatService;
     private final PaymentService paymentService;
+    private final TimeTypeService timeTypeService;
 
-    public PaymentController(ItemService itemService, SeatService seatService, PaymentService paymentService) {
+    public PaymentController(ItemService itemService, SeatService seatService, PaymentService paymentService, TimeTypeService timeTypeService) {
         this.itemService = itemService;
         this.seatService = seatService;
         this.paymentService = paymentService;
+        this.timeTypeService = timeTypeService;
     }
 
     @RequestMapping(value = "/basicInfo", method = RequestMethod.GET)
@@ -73,9 +77,18 @@ public class PaymentController {
         paymentInfo.setBarcode();
         Seat seat = new Seat(seatNum,paymentInfo.getBarcode(),true);
 
-
         paymentService.join(paymentInfo);
         seatService.join(seat);
+
+        String[] str = paymentInfo.getBarcode().split("_");
+        if(str[0].equals("tim")){
+            long remainTime = Long.parseLong(str[1])*60*60;
+            TimeType timeType = new TimeType();
+            timeType.setBarcode(paymentInfo.getBarcode());
+            timeType.setRemainTime(remainTime);
+            timeTypeService.join(timeType);
+            timeTypeService.setStartTime(paymentInfo.getBarcode());
+        }
 
         return "index";
     }
