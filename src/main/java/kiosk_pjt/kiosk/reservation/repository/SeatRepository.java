@@ -10,4 +10,5 @@ public interface SeatRepository {
     void remove(Seat seat);
     List<Seat> findAll();
     Seat findById(int seatNum);
+    Seat findByBarcode(String barcode);
 }

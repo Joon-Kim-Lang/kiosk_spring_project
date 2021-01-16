@@ -28,7 +28,6 @@ public class JpaSeatRepository implements SeatRepository{
     public void save(Seat seat) {
         int seatInt = seat.getSeatNum();
         String newBarcode = seat.getBarcode();
-
         Seat dbSeat = this.findById(seatInt);
         dbSeat.setBarcode(newBarcode);
         dbSeat.setIsoccupied(true);
@@ -38,7 +37,6 @@ public class JpaSeatRepository implements SeatRepository{
     public void remove(Seat seat) {
 
         int seatInt = seat.getSeatNum();
-
         Seat dbSeat = this.findById(seatInt);
         dbSeat.setBarcode(null);
         dbSeat.setIsoccupied(false);
@@ -54,4 +52,11 @@ public class JpaSeatRepository implements SeatRepository{
     public Seat findById(int seatNum) {
         return em.find(Seat.class, seatNum);
     }
+
+    @Override
+    public Seat findByBarcode(String barcode) {
+        return em.createQuery("select s from Seat s where s.barcode=:barcode", Seat.class)
+                .setParameter("barcode", barcode).getSingleResult();
+    }
+
 }

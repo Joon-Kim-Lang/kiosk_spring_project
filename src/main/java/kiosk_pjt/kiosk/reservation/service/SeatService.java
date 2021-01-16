@@ -8,6 +8,7 @@ public interface SeatService {
     void join(Seat seat);
     void leave(Seat seat);
     Seat findSeat(int num);
+    Seat findSeat(String barcode);
     boolean isAvailableSeat(int num);
     List<Seat> currentSeatsList();
 }

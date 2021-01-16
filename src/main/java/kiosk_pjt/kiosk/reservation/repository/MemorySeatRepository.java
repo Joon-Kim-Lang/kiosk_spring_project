@@ -22,13 +22,11 @@ public class MemorySeatRepository implements SeatRepository {
         if(store.size()>SeatRepository.MaxSeat)return;
         store.put(seat.getSeatNum(), seat);
     }
-
     @Override
     public void remove(Seat seat) {
         if (store.isEmpty())return;
         store.remove(seat.getSeatNum());
     }
-
     @Override
     public ArrayList findAll() {
         return new ArrayList(store.values());
@@ -37,5 +35,10 @@ public class MemorySeatRepository implements SeatRepository {
     @Override
     public Seat findById(int id) {
         return store.get(id);
+    }
+
+    @Override
+    public Seat findByBarcode(String barcode) {
+        return null;
     }
 }

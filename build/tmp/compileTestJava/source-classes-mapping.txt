@@ -10,5 +10,7 @@ kiosk_pjt/kiosk/payment/domain/PaymentInfoTest.java
  kiosk_pjt.kiosk.payment.domain.PaymentInfoTest
 kiosk_pjt/kiosk/reservation/repository/jdbcTemplateSeatRepositoryTest.java
  kiosk_pjt.kiosk.reservation.repository.jdbcTemplateSeatRepositoryTest
+kiosk_pjt/kiosk/reservation/repository/JpaSeatRepositoryTest.java
+ kiosk_pjt.kiosk.reservation.repository.JpaSeatRepositoryTest
 kiosk_pjt/kiosk/AppConfigTest.java
  kiosk_pjt.kiosk.AppConfigTest

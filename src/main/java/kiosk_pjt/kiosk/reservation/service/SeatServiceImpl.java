@@ -16,7 +16,6 @@ public class SeatServiceImpl implements SeatService {
     public SeatServiceImpl(SeatRepository seatRepository) {
         this.seatRepository = seatRepository;
     }
-
     @Override
     public void join(Seat seat) {
         seatRepository.save(seat);
@@ -30,11 +29,12 @@ public class SeatServiceImpl implements SeatService {
         return seatRepository.findById(seatNum);
     }
     @Override
+    public Seat findSeat(String barcode) { return seatRepository.findByBarcode(barcode); }
+    @Override
     public boolean isAvailableSeat(int seatNum) {
         return seatRepository.findById(seatNum) != null;
     }
     @Override
-
     public List<Seat> currentSeatsList(){
         List<Seat> seats = seatRepository.findAll();
         return seats;

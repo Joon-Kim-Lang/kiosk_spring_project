@@ -51,6 +51,11 @@ public class JdbcTemplateSeatRepository implements SeatRepository{
         return seats.get(0);
     }
 
+    @Override
+    public Seat findByBarcode(String barcode) {
+        return null;
+    }
+
     private RowMapper<Seat> seatRowMapper(){
         return new RowMapper<Seat>() {
             @Override

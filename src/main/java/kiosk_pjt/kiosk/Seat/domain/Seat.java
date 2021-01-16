@@ -8,8 +8,13 @@ import javax.persistence.Id;
 @Entity
 public class Seat {
     @Id
+    @Column(name = "SEAT_NUM")
     private int seatNum;
+
+    @Column(name = "BARCODE")
     private String barcode;
+
+    @Column(name="ISOCCUPIED")
     private boolean isoccupied;
 
     public Seat(int seatNum, String barcode, boolean isoccupied) {
@@ -17,7 +22,6 @@ public class Seat {
         this.barcode = barcode;
         this.isoccupied = isoccupied;
     }
-
     public Seat() {
 
     }
