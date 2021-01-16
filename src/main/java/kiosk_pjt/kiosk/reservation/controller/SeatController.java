@@ -9,8 +9,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.NoResultException;
 import javax.servlet.http.HttpServletRequest;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Enumeration;
 import java.util.List;
 
@@ -32,31 +37,6 @@ public class SeatController {
         model.addAttribute("seats", seats);
         return "seatSelectTemplate";
     }
-    @GetMapping("/seatInfo")
-    public String seatInfo(){
-        return "seatInfo";
-    }
-
-    @RequestMapping(value="/seatInfoCheck",method = RequestMethod.POST)
-    public String seatInfoCheck(@RequestParam(value = "barcode") String barcode){
-        PaymentInfo paymentInfo = paymentService.findPaymentInfo(barcode);
-        Seat seat = seatService.findSeat(barcode);
-        LocalDateTime paymentTime = paymentInfo.getPaymentTime();
-        if(paymentInfo==null){
-            return "index";
-        }else{
-            if(seat.getIsoccupied()==true){
-                return "index";
-            }else{
-                return "seatSelectTemplate";
-            }
-        }
-    };
-//    @RequestMapping(value="/seatInfoSave",method=RequestMethod.POST)
-//    public String seatInfoSave(@RequestParam(value = "barcode")String barcode){
-//        PaymentInfo paymentInfo = paymentService.findPaymentInfo(barcode);
-//        Seat seat = seatService.findSeat(barcode);
-//    }
 
     @GetMapping("/seatlist/num")
     public String jsonSeatlist(@RequestParam("seatNum")String seatNum){
@@ -64,4 +44,60 @@ public class SeatController {
         return seatNum;
     }
 
+    @GetMapping("/barcodeInfo")
+    public String seatInfo(){
+        return "barcodeInfo";
+    }
+
+    @RequestMapping(value="/barcodeInfoCheck",method = RequestMethod.POST)
+    public String seatInfoCheck(@RequestParam(value = "barcode") String barcode) throws ParseException {
+        PaymentInfo paymentInfo;Seat seat;
+        paymentInfo = paymentService.findPaymentInfo(barcode);
+        //바코드가 없어
+        if(paymentInfo==null){ return "index"; }
+        //바코드가 있어
+        if(isBarcodeAvailable(barcode)==true){
+
+            return "success";
+        }else{
+            return "index";
+        }
+    };
+
+    private boolean isBarcodeAvailable(String barcode) throws ParseException {
+        String[] s = barcode.split("_");
+        String menuInfo = s[0];
+        int time = Integer.parseInt(s[1]);
+
+        Date startTime = startTimebyBarcode(barcode);
+        Date currentTime = currentTime();
+        Date endTime;
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(startTime);
+
+        if(menuInfo.equals("hou")){
+            cal.add(Calendar.HOUR,time);
+        }else if(menuInfo.equals("time")){
+
+        }else if(menuInfo.equals("day")){
+            cal.add(Calendar.DATE,time);
+        }
+        endTime = cal.getTime();
+        if(startTime.getTime()<currentTime.getTime() && currentTime.getTime()<endTime.getTime()){ return true; }
+        else{return false;}
+    }
+    private Date currentTime() throws ParseException {
+        Date date_now = new Date(System.currentTimeMillis()); // 현재시간을 가져와 Date형으로 저장한다
+        return date_now;
+    }
+    private Date startTimebyBarcode(String barcode) throws ParseException {
+        String[] s = barcode.split("_");
+        String date = s[4].split("\\.")[0];
+        date = date.replace("T", " ");
+        System.out.println(date);
+        SimpleDateFormat form = new SimpleDateFormat("YYYY-MM-ddHH:mm:ss");
+        Date to = form.parse(date);
+        return to;
+    }
 }

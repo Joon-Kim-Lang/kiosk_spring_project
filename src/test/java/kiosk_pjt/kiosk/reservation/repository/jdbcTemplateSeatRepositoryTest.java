@@ -2,6 +2,8 @@ package kiosk_pjt.kiosk.reservation.repository;
 
 import kiosk_pjt.kiosk.AppConfig;
 import kiosk_pjt.kiosk.Item.domain.Item;
+import kiosk_pjt.kiosk.Item.domain.Kind;
+import kiosk_pjt.kiosk.Item.repository.ItemRepository;
 import kiosk_pjt.kiosk.Seat.domain.Seat;
 import kiosk_pjt.kiosk.reservation.service.SeatService;
 import org.assertj.core.api.Assertions;
@@ -20,6 +22,8 @@ public class jdbcTemplateSeatRepositoryTest {
 
     @Autowired
     SeatRepository seatRepository;
+    @Autowired
+    ItemRepository itemRepository;
 // DB 초기화 시키는 코드니깐 그냥 건들지 말고 가만히 있을 것
 //    @Test
 //    @Commit
@@ -50,7 +54,6 @@ public class jdbcTemplateSeatRepositoryTest {
             Seat seat = new Seat(i, null,false);
             seatRepository.register(seat);
         }
-
         //then
         List<Seat> list = seatRepository.findAll();
         for (Seat item : list) {

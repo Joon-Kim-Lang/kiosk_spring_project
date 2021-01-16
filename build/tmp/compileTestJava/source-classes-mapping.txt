@@ -14,3 +14,5 @@ kiosk_pjt/kiosk/reservation/repository/JpaSeatRepositoryTest.java
  kiosk_pjt.kiosk.reservation.repository.JpaSeatRepositoryTest
 kiosk_pjt/kiosk/AppConfigTest.java
  kiosk_pjt.kiosk.AppConfigTest
+kiosk_pjt/kiosk/reservation/repository/Controller/seatControllerTest.java
+ kiosk_pjt.kiosk.reservation.repository.Controller.seatControllerTest
