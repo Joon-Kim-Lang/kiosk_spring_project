@@ -8,7 +8,7 @@ kiosk_pjt/kiosk/Item/repository/JpaItemRepositoryTest.java
  kiosk_pjt.kiosk.Item.repository.JpaItemRepositoryTest
 kiosk_pjt/kiosk/payment/domain/PaymentInfoTest.java
  kiosk_pjt.kiosk.payment.domain.PaymentInfoTest
-kiosk_pjt/kiosk/reservation/repository/jdbcTemplateSeatRepositoryTest.java
- kiosk_pjt.kiosk.reservation.repository.jdbcTemplateSeatRepositoryTest
 kiosk_pjt/kiosk/AppConfigTest.java
  kiosk_pjt.kiosk.AppConfigTest
+kiosk_pjt/kiosk/reservation/repository/jdbcTemplateSeatRepositoryTest.java
+ kiosk_pjt.kiosk.reservation.repository.jdbcTemplateSeatRepositoryTest

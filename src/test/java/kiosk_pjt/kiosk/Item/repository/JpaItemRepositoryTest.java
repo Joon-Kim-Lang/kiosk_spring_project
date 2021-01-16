@@ -31,7 +31,7 @@ class JpaItemRepositoryTest {
     @Commit
     @DisplayName("Jpa 레포 잘 동작하는지 확인")
     void jpaRepositoryTest(){
-//        //given
+        //given
 //        Item item1 = new Item(Kind.hou_1, 1000,"시간권1시간");
 //        Item item2 = new Item(Kind.hou_2,2000,"시간권2시간");
 //        Item item3 = new Item(Kind.day_7,50000,"정기권7일");
