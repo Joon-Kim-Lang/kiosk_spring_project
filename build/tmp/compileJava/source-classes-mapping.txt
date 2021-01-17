@@ -30,6 +30,8 @@ kiosk_pjt/kiosk/AppConfig.java
  kiosk_pjt.kiosk.AppConfig
 kiosk_pjt/kiosk/payment/service/PaymentServiceImpl.java
  kiosk_pjt.kiosk.payment.service.PaymentServiceImpl
+kiosk_pjt/kiosk/reservation/controller/ExitController.java
+ kiosk_pjt.kiosk.reservation.controller.ExitController
 kiosk_pjt/kiosk/Item/service/ItemServiceImpl.java
  kiosk_pjt.kiosk.Item.service.ItemServiceImpl
 kiosk_pjt/kiosk/timetype/repository/TimeTypeRepository.java
@@ -42,6 +44,7 @@ kiosk_pjt/kiosk/payment/service/PaymentService.java
  kiosk_pjt.kiosk.payment.service.PaymentService
 kiosk_pjt/kiosk/reservation/controller/SeatController.java
  kiosk_pjt.kiosk.reservation.controller.SeatController
+ kiosk_pjt.kiosk.reservation.controller.SeatController$Data
 kiosk_pjt/kiosk/Item/repository/JpaItemRepository.java
  kiosk_pjt.kiosk.Item.repository.JpaItemRepository
 kiosk_pjt/kiosk/reservation/repository/JdbcTemplateSeatRepository.java

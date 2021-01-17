@@ -4,6 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.scheduling.support.SimpleTriggerContext;
 
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -37,4 +39,18 @@ public class seatControllerTest {
         Date to = form.parse(date);
         return to;
     }
+
+    @Test
+    @DisplayName("바코드 바꾸기")
+    void chagneBarcode() throws UnsupportedEncodingException {
+        String s = "day_7_금교?��_01071214552_2021-01-16T18:44:59.562999100";
+        byte[] bytes = s.getBytes(StandardCharsets.UTF_8);
+        byte [] euckr = s.getBytes("EUC-KR");
+
+        String s1 = new String(bytes, "UTF-8");
+        String s2 = new String(bytes, "EUC-KR");
+        System.out.println("s1 = " + s1);
+        System.out.println("s2 = " + s2);
+    }
+
 }

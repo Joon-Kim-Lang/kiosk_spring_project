@@ -12,13 +12,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.ZoneId;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Controller
 @RequestMapping("/seating")
@@ -45,9 +45,9 @@ public class SeatController {
     }
 
     @PostMapping("/seatlist/seatInfoSave")
-    public String seatInfoSave(@RequestParam("seatNum")String seatNum,@RequestParam("barcode")String barcode){
-        System.out.println("seatNum = " + seatNum);
-        System.out.println("barcode = " + barcode);
+    public String seatInfoSave(@RequestBody Data data){
+        String barcode = data.getBarcode();
+        String seatNum = data.getSeatNum();
 
         String[] s = barcode.split("_");
         String menuInfo = s[0];
@@ -58,6 +58,14 @@ public class SeatController {
             timeTypeService.setRemainTime(barcode);
         }
         return "index";
+    }
+    static class Data{
+        private String seatNum;
+        private String barcode;
+        public String getSeatNum() { return seatNum; }
+        public void setSeatNum(String seatNum) { this.seatNum = seatNum; }
+        public String getBarcode() { return barcode; }
+        public void setBarcode(String barcode) { this.barcode = barcode; }
     }
 
     @GetMapping("/barcodeInfo")
@@ -71,11 +79,10 @@ public class SeatController {
         paymentInfo = paymentService.findPaymentInfo(barcode);
         //바코드가 없어
         if(paymentInfo==null){
-            System.out.println("payment is not found");
-            return "index"; }
+            return "redirect:/";
+        }
         //바코드가 있어
         if(isBarcodeAvailable(barcode)==true){
-            System.out.println("barcode is available");
             try {
                 seat = seatService.findSeat(barcode);
             }catch (Exception e){
@@ -85,7 +92,7 @@ public class SeatController {
                 return "seatSelectTemplate";
             }
         }
-        return "index";
+        return "redirect:/";
     };
 
     private boolean isBarcodeAvailable(String barcode) throws ParseException {

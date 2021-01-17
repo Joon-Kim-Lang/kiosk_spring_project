@@ -8,7 +8,6 @@ kiosk_pjt/kiosk/Item/repository/JpaItemRepositoryTest.java
  kiosk_pjt.kiosk.Item.repository.JpaItemRepositoryTest
 kiosk_pjt/kiosk/payment/domain/PaymentInfoTest.java
  kiosk_pjt.kiosk.payment.domain.PaymentInfoTest
-<<<<<<< HEAD
 kiosk_pjt/kiosk/reservation/repository/jdbcTemplateSeatRepositoryTest.java
  kiosk_pjt.kiosk.reservation.repository.jdbcTemplateSeatRepositoryTest
 kiosk_pjt/kiosk/reservation/repository/JpaSeatRepositoryTest.java
@@ -17,9 +16,3 @@ kiosk_pjt/kiosk/AppConfigTest.java
  kiosk_pjt.kiosk.AppConfigTest
 kiosk_pjt/kiosk/reservation/repository/Controller/seatControllerTest.java
  kiosk_pjt.kiosk.reservation.repository.Controller.seatControllerTest
-=======
-kiosk_pjt/kiosk/AppConfigTest.java
- kiosk_pjt.kiosk.AppConfigTest
-kiosk_pjt/kiosk/reservation/repository/jdbcTemplateSeatRepositoryTest.java
- kiosk_pjt.kiosk.reservation.repository.jdbcTemplateSeatRepositoryTest
->>>>>>> f7f11ad0322463ef69ff97c0ebe9f784752679b7
