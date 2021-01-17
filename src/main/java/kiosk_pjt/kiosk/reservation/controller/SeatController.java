@@ -76,6 +76,7 @@ public class SeatController {
     @PostMapping("/barcodeInfoCheck")
     public String seatInfoCheck(@RequestParam(value = "barcode") String barcode,Model model) throws ParseException {
         PaymentInfo paymentInfo;Seat seat = null;
+        barcode = barcode.trim();
         paymentInfo = paymentService.findPaymentInfo(barcode);
         //바코드가 없어
         if(paymentInfo==null){
@@ -109,11 +110,11 @@ public class SeatController {
 
         if(menuInfo.equals("hou")){
             cal.add(Calendar.HOUR,time);
-        }else if(menuInfo.equals("time")){
+        }else if(menuInfo.equals("tim")){
             TimeType byId = timeTypeRepository.findById(barcode);
             long remainTime = byId.getRemainTime();
             int remain = Long.valueOf(Optional.ofNullable(remainTime).orElse(0L)).intValue();
-            cal.add(Calendar.HOUR,remain);
+            cal.add(Calendar.SECOND,remain);
             startTime =  Date.from( byId.getStartTime().atZone( ZoneId.systemDefault()).toInstant());
         }else if(menuInfo.equals("day")){
             cal.add(Calendar.DATE,time);

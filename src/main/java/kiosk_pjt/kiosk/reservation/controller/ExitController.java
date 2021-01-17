@@ -28,15 +28,17 @@ public class ExitController {
     @PostMapping("/exit")
     public  String exit(@RequestParam("barcode")String barcode){
         Seat seat = null;
+        barcode = barcode.trim();
         try{
              seat= seatService.findSeat(barcode);
         }catch(Exception e){
+            System.out.println("error = " + e);
             return "redirect:/";
         }
         String[] s = barcode.split("_");
         String menuInfo = s[0];
         seatService.leave(seat);
-        if(menuInfo.equals("time")) {
+        if(menuInfo.equals("tim")) {
             timeTypeService.setRemainTime(barcode);
         }
         return "redirect:/";

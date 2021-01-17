@@ -28,6 +28,8 @@ kiosk_pjt/kiosk/reservation/repository/JpaSeatRepository.java
  kiosk_pjt.kiosk.reservation.repository.JpaSeatRepository
 kiosk_pjt/kiosk/AppConfig.java
  kiosk_pjt.kiosk.AppConfig
+kiosk_pjt/kiosk/reservation/controller/OpenController.java
+ kiosk_pjt.kiosk.reservation.controller.OpenController
 kiosk_pjt/kiosk/payment/service/PaymentServiceImpl.java
  kiosk_pjt.kiosk.payment.service.PaymentServiceImpl
 kiosk_pjt/kiosk/reservation/controller/ExitController.java

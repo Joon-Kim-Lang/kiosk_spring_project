@@ -35,10 +35,13 @@ public class OpenController {
     @PostMapping("open")
     public String open(@RequestParam("barcode")String barcode) throws ParseException {
         Seat seat;
+        barcode = barcode.trim();
         try{ seat = seatService.findSeat(barcode);
-        }catch (Exception e){ return "redirect:/"; }
-
+        }catch (Exception e){
+            System.out.println("error = " + e);
+            return "redirect:/"; }
         if(isBarcodeAvailable(barcode)==true){
+            System.out.println("success");
             return "redirect:/";
         }else{
             return "basicInfoTemplate";
@@ -58,11 +61,12 @@ public class OpenController {
 
         if(menuInfo.equals("hou")){
             cal.add(Calendar.HOUR,time);
-        }else if(menuInfo.equals("time")){
+        }else if(menuInfo.equals("tim")){
             TimeType byId = timeTypeRepository.findById(barcode);
             long remainTime = byId.getRemainTime();
+            System.out.println("remainTime = " + remainTime);
             int remain = Long.valueOf(Optional.ofNullable(remainTime).orElse(0L)).intValue();
-            cal.add(Calendar.HOUR,remain);
+            cal.add(Calendar.SECOND,remain);
             startTime =  Date.from( byId.getStartTime().atZone( ZoneId.systemDefault()).toInstant());
         }else if(menuInfo.equals("day")){
             cal.add(Calendar.DATE,time);
