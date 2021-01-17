@@ -3,19 +3,21 @@ package kiosk_pjt.kiosk.reservation.controller;
 
 import kiosk_pjt.kiosk.Seat.domain.Seat;
 import kiosk_pjt.kiosk.reservation.service.SeatService;
+import kiosk_pjt.kiosk.timetype.service.TimeTypeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ExitController {
 
     private final SeatService seatService;
+    private final TimeTypeService timeTypeService;
 
-    public ExitController(SeatService seatService) {
+    public ExitController(SeatService seatService, TimeTypeService timeTypeService) {
         this.seatService = seatService;
+        this.timeTypeService = timeTypeService;
     }
 
     @GetMapping("/exitInfo")
@@ -31,7 +33,12 @@ public class ExitController {
         }catch(Exception e){
             return "redirect:/";
         }
+        String[] s = barcode.split("_");
+        String menuInfo = s[0];
         seatService.leave(seat);
+        if(menuInfo.equals("time")) {
+            timeTypeService.setRemainTime(barcode);
+        }
         return "redirect:/";
     }
 }
