@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>좌석 선택</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="/CSS/seat_payment.css">
+</head>
+<body>
+<form action="#" th:action="@{/getPay}" method="post">
+    <div>
+    <input type="hidden" th:field = "*{paymentInfo.name}" th:value = "${paymentInfo.getName()}">
+    <input type="hidden" th:field = "*{paymentInfo.phoneNumber}" th:value = "${paymentInfo.getPhoneNumber()}">
+    <input type="hidden" th:field = "*{paymentInfo.itemKind}" th:value = "${paymentInfo.getItemKind()}">
+    </div>
+    <div class="seat__container">
+        <th:block th:each="seat : ${seats}" >
+            <input type = "submit" name ="seatNum" th:classappend ="${seat.isoccupied} ? red" class="seat"  th:value="${seat.getSeatNum()}">
+        </th:block >
+    </div>
+</form>
+</body>
+</html>
+
+<!---->

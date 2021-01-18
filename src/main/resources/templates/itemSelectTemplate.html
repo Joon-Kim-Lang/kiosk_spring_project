@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>상품선택</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>상품을 선택해주세요</h1>
+
+<form action="#" th:action="@{/seatSelect}" th:object="${paymentInfo}" method="post">
+    <input type="hidden" th:field = "*{name}" th:value = "${paymentInfo.getName()}">
+    <input type="hidden" th:field = "*{phoneNumber}" th:value = "${paymentInfo.getPhoneNumber()}">
+    <select th:field="*{itemKind}">
+        <option th:each="p : ${items}" th:value="${p.getKind()}" th:text="${p.getName()}" />
+    </select>
+    <p><input type="submit" value="Submit" /></p>
+
+<!--    <button type="submit" th:each="p : ${items}" th:value = "${p.getKind()}" th:field="*{itemKind}" th:text="${p.getName()}" />-->
+</form>
+</body>
+</html>

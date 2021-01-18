@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <body>
+        <h1>기본정보입력</h1>
+        <form action="#" th:action="@{/open}" method="post">
+            <p>바코드 입력: <input type="text" name="barcode"/></p>
+            <p>
+                <input type="submit" value="Submit"/>
+                <input type="reset" value="Reset" />
+            </p>
+        </form>
+    </body>
+</html>
