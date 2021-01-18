@@ -16,14 +16,14 @@ public class TimeTypeServiceImpl implements TimeTypeService{
         this.timeTypeRepository = timeTypeRepository;
     }
 
-    @Override
+    @Override@Transactional
     public TimeType join(TimeType timeType) {
 
         timeTypeRepository.save(timeType);
         return timeType;
     }
 
-    @Override
+    @Override@Transactional
     public TimeType delete(String barcode) {
         TimeType removeItem = timeTypeRepository.findById(barcode);
         timeTypeRepository.remove(removeItem);
