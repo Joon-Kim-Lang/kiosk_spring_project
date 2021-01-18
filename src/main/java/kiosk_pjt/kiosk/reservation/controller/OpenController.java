@@ -1,6 +1,8 @@
 package kiosk_pjt.kiosk.reservation.controller;
 
 import kiosk_pjt.kiosk.Seat.domain.Seat;
+import kiosk_pjt.kiosk.payment.domain.PaymentInfo;
+import kiosk_pjt.kiosk.payment.service.PaymentService;
 import kiosk_pjt.kiosk.reservation.service.SeatService;
 import kiosk_pjt.kiosk.timetype.domain.TimeType;
 import kiosk_pjt.kiosk.timetype.repository.TimeTypeRepository;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
@@ -21,12 +24,13 @@ public class OpenController {
 
     private final TimeTypeRepository timeTypeRepository;
     private final SeatService seatService;
+    private final PaymentService paymentService;
 
-    public OpenController(TimeTypeRepository timeTypeRepository, SeatService seatService) {
+    public OpenController(TimeTypeRepository timeTypeRepository, SeatService seatService, PaymentService paymentService) {
         this.timeTypeRepository = timeTypeRepository;
         this.seatService = seatService;
+        this.paymentService = paymentService;
     }
-
     @GetMapping("/openInfo")
     public String openInfo(){
         return "barcodeInfoForOpen";
@@ -80,11 +84,9 @@ public class OpenController {
         return date_now;
     }
     private Date startTimebyBarcode(String barcode) throws ParseException {
-        String[] s = barcode.split("_");
-        String date = s[4].split("\\.")[0];
-        date = date.replace("T", " ");
-        SimpleDateFormat form = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date to = form.parse(date);
-        return to;
+        PaymentInfo paymentInfo = paymentService.findPaymentInfo(barcode);
+        LocalDateTime paymentTime = paymentInfo.getPaymentTime();
+        Date date = Date.from( paymentTime.atZone( ZoneId.systemDefault()).toInstant());
+        return date;
     }
 }

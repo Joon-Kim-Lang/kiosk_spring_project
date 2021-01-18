@@ -17,6 +17,7 @@ import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.*;
 
@@ -53,7 +54,7 @@ public class SeatController {
         String menuInfo = s[0];
         Seat seat = new Seat(Integer.parseInt(seatNum), barcode, true);
         seatService.join(seat);
-        if(menuInfo.equals("time")){
+        if(menuInfo.equals("tim")){
             timeTypeService.setStartTime(barcode);
             timeTypeService.setRemainTime(barcode);
         }
@@ -128,11 +129,9 @@ public class SeatController {
         return date_now;
     }
     private Date startTimebyBarcode(String barcode) throws ParseException {
-        String[] s = barcode.split("_");
-        String date = s[4].split("\\.")[0];
-        date = date.replace("T", " ");
-        SimpleDateFormat form = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date to = form.parse(date);
-        return to;
+        PaymentInfo paymentInfo = paymentService.findPaymentInfo(barcode);
+        LocalDateTime paymentTime = paymentInfo.getPaymentTime();
+        Date date = Date.from( paymentTime.atZone( ZoneId.systemDefault()).toInstant());
+        return date;
     }
 }
