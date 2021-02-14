@@ -10,8 +10,6 @@
 
 ## Team
 
----
-
 - **kks** : Developer
   - `Seat system Part`
   - `git Manage Part`
@@ -21,8 +19,6 @@
 
 ## Environment
 
----
-
 - **java 14**
 - **spring-boot 2.4.1**
 - **jpa 2.4.1**
@@ -30,7 +26,6 @@
 
 ## Description
 
----
 
 ## flow chart
 
@@ -39,8 +34,6 @@
 <br>
 
 ## client
-
----
 
 ### 1. 시작 page
 
@@ -63,7 +56,6 @@
 
 ## Server
 
----
 
 - Seat db : 좌석현황 데이터베이스
 - payment db : 결제 정보 데이터베이스
@@ -72,8 +64,6 @@
 ![image](https://user-images.githubusercontent.com/57718605/107868094-70337d00-6ec4-11eb-88ad-7d8368ba3c39.png)
 
 ## dependencies
-
----
 
 - spring-boot-starter-thymeleaf
 - spring-boot-starter-web
